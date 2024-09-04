@@ -8,7 +8,7 @@ main.i: main.c
 	$(CPP) main.c > main.i
 
 clean:
-	rm -f main.i hello.txt main.o main.s second.o
+	rm -f main.i hello.txt main.o main.s second.o firmware.elf
 
 .PHONY: clean
 
