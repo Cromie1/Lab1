@@ -5,6 +5,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Clean workspace
+        run: |
+          echo "Cleaning up previous run"
+          rm -rf "${{ github.workspace }}"
+          mkdir -p "${{ github.workspace }}"
 
       - name: Checkout pico-sdk/develop
         uses: actions/checkout@v2
@@ -28,6 +33,8 @@ jobs:
             test ! -f main.o
             test ! -f main.i
             test ! -f main.s
+            test -f Makefile && echo "Makefile exists" || echo "Makefile does not exist"
+
             make hello.txt
             test -f hello.txt
 
