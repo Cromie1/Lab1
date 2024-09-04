@@ -10,3 +10,21 @@ clean:
 	rm -f main.i hello.txt
 
 .PHONY: clean
+
+CC=$(PICO_TOOLCHAIN_PATH)/bin/arm-none-eabi-gcc
+AS=$(PICO_TOOLCHAIN_PATH)/bin/arm-none-eabi-as
+
+main.s: main.i
+	$(CC) -S main.i
+
+%.o: %.s
+	$(AS) $< -o $@
+
+LD=$(PICO_TOOLCHAIN_PATH)/bin/arm-none-eabi-ld
+SRC=main.c second.c
+OBJS=$(patsubst %.c,%.o,$(SRC))
+
+firmware.elf: $(OBJS)
+	$(LD) -o $@ $^
+
+all: firmware.elf
