@@ -33,6 +33,7 @@ jobs:
             test ! -f main.o
             test ! -f main.i
             test ! -f main.s
+            test -f Makefile
             make hello.txt
             test -f hello.txt
 
