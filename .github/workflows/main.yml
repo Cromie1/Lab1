@@ -40,14 +40,14 @@ jobs:
 
       - name: Compile
         shell: bash
-        working-directory: ${{github.workspace}}
+        working-directory: ${{github.workspace}}/source
         run:
             test ! -f firmware.elf
             PICO_TOOLCHAIN_PATH=../pico-sdk make
             test -f firmware.elf
       - name: Clean
         shell: bash
-        working-directory: ${{github.workspace}}
+        working-directory: ${{github.workspace}}/source
         run: |
             make clean
             test ! -f hello.txt
