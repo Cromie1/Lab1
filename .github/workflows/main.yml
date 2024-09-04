@@ -34,7 +34,7 @@ jobs:
             test ! -f main.i
             test ! -f main.s
             test -f Makefile && echo "Makefile exists" || echo "Makefile does not exist"
-
+            test -f Main.c && echo "Main.c exists" || echo "Main.c does not exist"
             make hello.txt
             test -f hello.txt
 
