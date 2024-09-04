@@ -1,3 +1,4 @@
+all: firmware.elf
 hello.txt:
 	echo "hello world!" > hello.txt
 
@@ -7,7 +8,7 @@ main.i: main.c
 	$(CPP) main.c > main.i
 
 clean:
-	rm -f main.i hello.txt
+	rm -f main.i hello.txt main.o main.s second.o
 
 .PHONY: clean
 
@@ -27,4 +28,3 @@ OBJS=$(patsubst %.c,%.o,$(SRC))
 firmware.elf: $(OBJS)
 	$(LD) -o $@ $^
 
-all: firmware.elf
