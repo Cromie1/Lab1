@@ -41,7 +41,7 @@ jobs:
       - name: Compile
         shell: bash
         working-directory: ${{github.workspace}}/source
-        run:
+        run: |
             test ! -f firmware.elf
             PICO_TOOLCHAIN_PATH=../pico-sdk make
             test -f firmware.elf
